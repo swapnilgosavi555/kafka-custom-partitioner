@@ -21,7 +21,7 @@ object KafkaProducer extends App {
     for (i <- 0 to 5) {
       val record = new ProducerRecord[String, String](
         topicName,
-        "IT",
+        "IT" + i,
         "My Site is knoldus.com " + i
       )
       producer.send(record)

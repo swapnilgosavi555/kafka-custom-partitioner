@@ -25,8 +25,8 @@ class CustomPartitioner extends Partitioner {
         "All messages must have department name as key"
       )
 
-    if (key.asInstanceOf[String] == departmentName) {
-      val p = Utils.toPositive(Utils.murmur2(valueBytes)) % it
+    if (key.asInstanceOf[String].startsWith(departmentName)) {
+      val p = Utils.toPositive(Utils.murmur2(keyBytes)) % it
       System.out.println("Key = " + key.toString + " Partition = " + p)
       p
     } else {
